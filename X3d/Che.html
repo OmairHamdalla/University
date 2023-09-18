@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>AAAAAAAAAA</title>
+    <script type="text/javascript" src="https://www.x3dom.org/release/x3dom.js"></script>
+    <link rel="stylesheet" type="text/css" href="https://www.x3dom.org/release/x3dom.css">
+</head>
+
+<body margin="0px" padding="0px">
+
+  
+  <script>
+    var switch1 = 1;
+    var switch2 = 1;
+    var switch3 = 1;
+
+    function LightSwitch1(){
+          var Button = document.getElementById("light1");
+        if (switch1==1){
+        Button.setAttribute("intensity", "0.6");
+        Button.setAttribute("color", "9 6.9 0.0");  
+        switch1 = 0;} 
+
+        else {
+        Button.setAttribute("intensity", "-5");
+        Button.setAttribute("color", "2 1 0");  
+        switch1 = 1;
+        }
+        }
+
+        function LightSwitch2(){
+        var Light2 = document.getElementById('light2');
+        if (switch2==1){
+          Light2.setAttribute('color', '8 3 8');
+          Light2.setAttribute("intensity", "0.6");       
+          switch2 = 0;
+      } 
+        else {
+          Light2.setAttribute('color', '10 5 0');
+          Light2.setAttribute("intensity", "0.9");   
+          switch2 = 1;
+        }
+      }
+
+      function TextureChanger(){
+        var Box = document.getElementById("Box");
+        if (switch3==1){
+          Box.setAttribute("url", "https://images.rawpixel.com/image_png_800/czNmcy1wcml2YXRlL3Jhd3BpeGVsX2ltYWdlcy93ZWJzaXRlX2NvbnRlbnQvcGYtczEyNC1hay01MzUwXzEucG5n.png?s=O55wXo9q11k0dszJ4QG5sR1oEHvcspaSbpBs0GDhhMc" ); 
+        switch3 = 0;} 
+
+        else {
+          Box.setAttribute("url", "https://images.unsplash.com/photo-1547056961-3c25e9140b05?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8YnJpY2tzfGVufDB8fDB8fA%3D%3D&w=1000&q=80" ); 
+        switch3 = 1;
+        }
+        
+       
+}
+
+      </script>
+
+
+<x3d width="100%" height="49%"> 
+    <scene>
+      
+      <Viewpoint position="0 1 7" orientation="-0.10318 -1.9950 -0.03159 0.4"  
+      description="camera"></Viewpoint>
+
+    <Transform>
+      <inline url="MyRoom.x3d">  </inline> 
+    </Transform>
+    
+<!-- Room 1 codes
+    Light in room 1 3d model credits : rhcreations
+    source : https://sketchfab.com/3d-models/ceiling-light-2-892f027037a04cb29ae3654c1c7b4c6b
+    -->
+
+    <Transform translation='0 3.5 5' scale="0.09 0.09 0.09">
+      <inline url="CeilingLight.glb">  </inline> 
+    </Transform>
+
+    <Transform translation="2 1.1 4.6" scale="0.15 0.25 0.15" rotation="7 10 0 0" >
+      <shape>
+        <appearance >
+          <material></material>
+          <ImageTexture url = "https://images.pexels.com/photos/220182/pexels-photo-220182.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"></ImageTexture>
+        </appearance>
+        <cylinder onclick="LightSwitch2()"></cylinder>
+      </shape>
+    </Transform> 
+
+    <PointLight id = "light2" attenuation="2 2 2" on='true' ambientIntensity="0.2" 
+       intensity='0.7' color= '3 3 3' location='0.1 2.5 5' shadowIntensity="0.2" 
+       radius='50' >  </PointLight> 
+
+    <Transform translation="1.7 0.7 2.7" scale =" 0.25 0.7 0.25">
+      <shape>
+        <appearance>
+          <material> </material>
+            <ImageTexture id="Box" url="https://images.unsplash.com/photo-1547056961-3c25e9140b05?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8YnJpY2tzfGVufDB8fDB8fA%3D%3D&w=1000&q=80"></ImageTexture>
+        </appearance>
+        <box></box>
+      </shape>
+    </Transform>
+ 
+    
+
+    <!-- Room 2 codes
+      Second lamp in the first room  credits : JasminaTrifunovic
+    source : https://www.cgtrader.com/free-3d-models/interior/house-interior/led-lamp-glb-gltf-obj-3dsmax
+     -->
+    <Transform translation='1.8 0 -2.3' scale="0.05 0.06 0.05">
+          <inline url="Lamp.glb"> </inline> 
+    </Transform>
+
+    <PointLight id = "light1" attenuation="1 1 1" on='true' ambientIntensity="0.2" 
+       intensity='0.1' color= '9 6.9 0.0' location='1.4 1.7 -1.8' shadowIntensity="0.5" 
+       radius='9.0000' >  </PointLight>  
+
+       <Transform translation='2 1 0' scale = "0.09 0.09 0.09" >
+        <shape>
+          <appearance>
+            <material></material>
+            <ImageTexture url = "button.png"></ImageTexture>
+          </appearance>
+          <box onclick="LightSwitch1()"></box>
+        </shape>
+      </Transform>
+
+      <Transform translation='2.0698 1 0' scale = "0.1 0.3 0.1" >
+        <shape>
+          <appearance>
+            <material></material>
+            <ImageTexture url = "https://cdn.pixabay.com/photo/2015/01/07/16/37/wood-591631__340.jpg"></ImageTexture>
+          </appearance>
+          <box></box>
+        </shape>
+      </Transform>
+
+
+       <!-- <Transform translation="1.5 1.7 -1.7" scale="0.08 0.08 0.08" rotation="7 10 0 0" >
+        <shape>
+          <appearance >
+            <material shininess="1"></material>
+            <ImageTexture url = "https://images.pexels.com/photos/220182/pexels-photo-220182.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"></ImageTexture>
+          </appearance>
+          <cylinder></cylinder>
+        </shape>
+      </Transform>  -->
+
+    
+
+    
+
+    </scene> 
+</x3d>
+
+<div>
+  <button type="button" onclick="TextureChanger()" > Change Box Texture in room 1 </button>
+</div>
+</body>
+
+  </html>
