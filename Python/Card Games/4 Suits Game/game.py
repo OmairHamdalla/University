@@ -12,7 +12,6 @@ playerNum = 2
 for _ in range(playerNum):
     hand = []
     
-    
     for shape in shapes:
         card = random.choice([value for value in values if value not in hand])
         hand.append(card)
@@ -33,6 +32,7 @@ counter = 0
 for player in players:
     print(f"Player {'1' if player == players[0] else 'Ai'} cards : {player} ")
 
+time.sleep(2)
 
 for card in range(4):
         if players[0][card] > players[1][card]:
@@ -47,8 +47,10 @@ for card in range(4):
              print(f"Draw on {shapes[card]}")
         
 for player in players: print(f"Player {'Ai' if player == players[0] else '1'} points : {AI_Player if player == players[0] else Player1} ")
-
+time.sleep(2)
 if AI_Player == Player1 : print("Its a draw !")
 elif Player1 > AI_Player : print("Player 1 is the winner: ")
 else: print("AI is the winner: ")
+
+time.sleep(5)
 
